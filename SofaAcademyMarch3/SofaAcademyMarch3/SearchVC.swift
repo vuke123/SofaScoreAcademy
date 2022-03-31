@@ -16,8 +16,8 @@ class SearchVC: UIViewController {
     let appleLabel = UILabel()
     let appleButton = UIButton()
     let textField1 = CustomTextField(insets: UIEdgeInsets(top:2, left:12, bottom:2, right: 12))
-    let button1 = CustomButton(frame: CGRect(x:0, y:0, width: 80, height:80))
-
+//    let button = CustomButton(frame: CGRect(x:0, y:0, width: 80, height:80))
+    let button1 = CustomButton1(backgroundColor: .systemIndigo, mojTitle: "PressMe")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class SearchVC: UIViewController {
         setupConstraints()
         createDismissKeyboardTapGesture()
         textField1.delegate = self
-        let viewModel = MyCustomButtonViewModel(title : "Custom", imageName: "")
+//        let viewModel = MyCustomButtonViewModel(title : "Custom", imageName: "")
         
     }
 
@@ -86,7 +86,7 @@ class SearchVC: UIViewController {
         }
 
         textField1.snp.makeConstraints {
-            $0.bottom.equalTo(imageView.snp.top).offset(20)
+            $0.bottom.equalTo(imageView.snp.top).offset(-20)
             $0.centerX.equalTo(imageView.snp.centerX)
             $0.width.equalTo(300)
             $0.height.equalTo(50)
