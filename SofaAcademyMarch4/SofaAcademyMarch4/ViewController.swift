@@ -21,7 +21,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         App(title:"instagram", imageName: "instagram"),
         App(title:"snapchat", imageName: "snap"),
         App(title:"tiktok", imageName: "tiktok"),
-        App(title:"youtube", imageName: "yt")
+        App(title:"youtube", imageName: "yt"),
+        App(title:"wap", imageName: "wap"),
+        App(title:"link", imageName: "link"),
+        App(title:"facebook", imageName: "facebook"),
+        App(title:"instagram", imageName: "instagram"),
+        App(title:"snapchat", imageName: "snap"),
+        App(title:"tiktok", imageName: "tiktok"),
+        App(title:"youtube", imageName: "yt"),
+        App(title:"wap", imageName: "wap"),
+        App(title:"link", imageName: "link")
     ]
     
     override func viewDidLoad() {
@@ -41,6 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.label.textColor = .systemIndigo
         cell.label.isHighlighted = true
         cell.label.shadowColor = .systemGray2
+        cell.label.shadowOffset.width = 2
         NSLayoutConstraint.activate([
         cell.label.widthAnchor.constraint(equalToConstant: 60)
         ])
@@ -50,6 +60,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
+                
+            } else {
+                cell.accessoryType = .none
+            }
+        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
