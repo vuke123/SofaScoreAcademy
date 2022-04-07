@@ -32,7 +32,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         App(title:"wap", imageName: "wap"),
         App(title:"link", imageName: "link")
     ]
+
+    var array = Array(repeating: true, count: 20)
     
+    var i = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
@@ -46,6 +49,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let app = data[indexPath.row]
         let cell = table.dequeueReusableCell(withIdentifier: "cell", for:indexPath) as! CustomTableViewCell
+        if(array[indexPath.row]) {
+            cell.accessoryType = .checkmark
+        }
+        else {
+            cell.accessoryType = .none
+        }
         cell.label.text = app.title
         cell.label.textColor = .systemIndigo
         cell.label.isHighlighted = true
@@ -67,9 +76,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if cell.accessoryType == .none {
                 cell.accessoryType = .checkmark
-                
+                array[indexPath.row] = true
             } else {
                 cell.accessoryType = .none
+                array[indexPath.row] = false
             }
         }
 
